@@ -1,3 +1,5 @@
+![Build status](https://github.com/helmutschneider/brainfuck/workflows/build/badge.svg)
+
 # Brainfuck interpreter in Rust
 This repository contains a tiny implementation of the [Brainfuck language](https://en.wikipedia.org/wiki/Brainfuck).
 
