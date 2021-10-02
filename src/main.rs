@@ -7,12 +7,7 @@ pub fn brainfuck_exec(program: &str) -> String {
     let mut state = State::<30_000>::new(program);
     let mut out: Vec<u8> = Vec::new();
 
-    loop {
-        let maybe_instruction = state.get_current_instruction();
-        if maybe_instruction.is_none() {
-            break;
-        }
-        let instruction = maybe_instruction.unwrap();
+    while let Some(instruction) = state.get_current_instruction() {
         match instruction {
             '>' => {
                 state.move_next_instruction();
@@ -46,6 +41,7 @@ pub fn brainfuck_exec(program: &str) -> String {
                         child_loop_counter += match instr {
                             Some('[') => 1,
                             Some(']') => -1,
+                            None => panic!("Unclosed loop body."),
                             _ => 0,
                         }
                     }
