@@ -34,6 +34,7 @@ pub fn brainfuck_exec(program: &str) -> String {
                 state.move_next_instruction();
                 out.push(state.get_current_cell());
             }
+            ',' => panic!("The \",\" instruction is not implemented."),
             '[' => {
                 if state.get_current_cell() == 0 {
                     // skip the loop body while keeping track of child loop bodies.
